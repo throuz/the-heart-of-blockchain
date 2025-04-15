@@ -12,6 +12,9 @@ import {
   LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 import Logo from "./components/Logo";
+import DonationHistory from "./components/DonationHistory";
+import DonationProgress from "./components/DonationProgress";
+import FeaturedCauses from "./components/FeaturedCauses";
 
 const RECIPIENT_ADDRESS = "YOUR_RECIPIENT_WALLET_ADDRESS"; // Replace with actual recipient address
 
@@ -34,7 +37,20 @@ export default function Home() {
             </div>
             <WalletMultiButton />
           </div>
-          <DonationForm />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <DonationProgress
+              currentAmount={50}
+              goalAmount={100}
+              title="Current Campaign"
+            />
+            <DonationForm />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FeaturedCauses />
+            <DonationHistory />
+          </div>
         </div>
       </div>
     </WalletContextProvider>
@@ -73,9 +89,9 @@ function DonationForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg border-2 border-red-600">
+    <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-red-600">
       <h2 className="text-2xl font-semibold mb-4 text-red-600">
-        Support Emergency Services
+        Make a Donation
       </h2>
       <div className="space-y-4">
         <div>
